@@ -1,13 +1,15 @@
 
 <template>
   <main>
-      {{ countries }}
     <ul>
       <li v-for="country in countries" :key="country.cca3" class="hover:shadow-xl">
         <NuxtLink :to="{
-            name: 'country',
+            name: 'country-name',
+            params: {
+                name : country.name.common.replaceAll(' ', '-')
+            },
             query : {
-                name : country.name.common
+                name : country.name.common.replaceAll(' ', '-')
             }
         }" class="block">
             <img class="flag" :src="country.flags.png" :alt="country.flags.alt">
@@ -19,7 +21,8 @@
 </template>
 <script setup>
 const { data : countries } = await useFetch('https://restcountries.com/v3.1/all')
-
+const edditedName = countries.value[0].name.common.replaceAll(' ', '-')
+console.log(edditedName)
 </script>
 
 <style lang="postcss" scoped>
