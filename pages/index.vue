@@ -12,9 +12,6 @@
             params: {
               name: country.name.common.replaceAll(' ', '-'),
             },
-            query: {
-              name: country.name.common.replaceAll(' ', '-'),
-            },
           }"
           class="block"
         >
